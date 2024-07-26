@@ -17,20 +17,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($projects as $singleproject)
+
 
                     <tr>
-                        <th scope="row">{{ $singleproject->id}}</th>
-                        <td>{{ $singleproject->nome}}</td>
-                        <td>{{ $singleproject->linguaggio_utilizzato}}</td>
-                        <td><a href=" {{ $singleproject->url_repo}}">Clicca qui per vedere la repository</a></td>
+                        <th scope="row">{{ $project->id}}</th>
+                        <td>{{ $project->nome}}</td>
+                        <td>{{ $project->linguaggio_utilizzato}}</td>
+                        <td><a href=" {{ $project->url_repo}}">Clicca qui per vedere la repository</a></td>
                         <td>
 
-                            <a href="{{ route('admin.project.show', ['project' => $singleproject->id]) }}" class="btn btn-primary d-flex justify-content-center">Show</a>
-                            <a href="{{ route('admin.project.edit', ['project' => $singleproject->id]) }}" class="btn btn-primary d-flex justify-content-center">edit</a>
+                            <a href="{{ route('admin.project.edit', ['project' => $project->id]) }}" class="btn btn-primary d-flex justify-content-center">Edit</a>
                         </td>
                     </tr>
-                    @endforeach
+
 
                     </tbody>
                 </table>

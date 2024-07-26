@@ -13,9 +13,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
+        $projects = Project::all();
 
-        return view('admin.project.index', compact('project'));
+        return view('admin.project.index', compact('projects'));
     }
 
     /**
@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.project.create');
     }
 
     /**
@@ -31,31 +31,39 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $newProject = new Project($data);
+        $newProject->save();
+
+        return redirect()->route('admin.project.show', ['project' => $newProject->id])->with('message_nuovo_progetto', $newProject->nome . " è stato Creato con successo!!");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.project.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        //admin.project.edit
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->except('_token');
+        $project->update($data);
+
+        return redirect()->route('admin.project.show', ['project' => $project->id])->with('message_nuovo_progetto', $project->nome . " è stato Creato con successo!!");
     }
 
     /**
