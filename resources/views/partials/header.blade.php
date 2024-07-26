@@ -10,8 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <a class="nav-link" href="/home">
-                Homepage</a>
+                <li>
+                    <a class="nav-link" href="/home">
+                    Homepage</a>
+
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.project.index')}}"  aria-current="page">
+                        Lista progetti
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\admin\ProjectController as ProjectController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 
 /*
@@ -15,17 +16,17 @@ use App\Http\Controllers\HomeController as GuestHomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
+Route::get('/', [GuestHomeController::class, 'index'])->name('home');
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
+
 
 route::middleware('auth')->name('admin.')->prefix('admin/')->group(
     function(){
-        /* rotte protette */
+        Route::resource('project', ProjectController::class);
     }
 );
 
