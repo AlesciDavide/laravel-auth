@@ -38,3 +38,8 @@
     </div>
 </div>
 @endsection
+
+@section('custom_script')
+@vite('resources/js/alert_confirm.js')
+@endsection
+

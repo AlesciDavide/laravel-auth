@@ -4,7 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
 
+        @if (session('message_nuovo_progetto'))
+            <div class="alert alert-success">
+                {{ session('message_nuovo_progetto') }}
+            </div>
 
+        @elseif (session('message_update_progetto'))
+            <div class="alert alert-success">
+                {{ session('message_update_progetto')}}
+            </div>
+        @endif
         <div class="col-12">
             <table class="table table-dark table-striped">
                 <thead>
@@ -29,7 +38,6 @@
                             <a href="{{ route('admin.project.edit', ['project' => $project->id]) }}" class="btn btn-primary d-flex justify-content-center">Edit</a>
                         </td>
                     </tr>
-
 
                     </tbody>
                 </table>

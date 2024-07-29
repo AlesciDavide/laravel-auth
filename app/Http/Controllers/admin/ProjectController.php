@@ -63,14 +63,26 @@ class ProjectController extends Controller
         $data = $request->except('_token');
         $project->update($data);
 
-        return redirect()->route('admin.project.show', ['project' => $project->id])->with('message_nuovo_progetto', $project->nome . " è stato Creato con successo!!");
+        return redirect()->route('admin.project.show', ['project' => $project->id])->with('message_update_progetto', $project->nome . " è stato aggiornato con successo!!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+
+        $project->delete();
+
+        return redirect()->route('admin.project.index')->with('message_delete', $project->nome . " è stato cancellato con successo!!");
+    }
+
+    /* pagina con i progetti nel cestino */
+
+    public function deletedIndex()
+    {
+        $projects = Project::onlyTrashed()->get();
+
+        return view('admin.project.delete', compact('projects'));
     }
 }

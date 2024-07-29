@@ -21,6 +21,11 @@
                     </a>
                 </li>
                 <li>
+                    <a class="nav-link active mx-5" href="{{ route('admin.project.deleteindex')}}"  aria-current="page">
+                        Progetti nel cestino
+                    </a>
+                </li>
+                <li>
                     <a class="nav-link" aria-current="page" href="{{ route('admin.project.create')}}">Crea nuovo progetto</a>
                 </li>
             </ul>
