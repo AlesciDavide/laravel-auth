@@ -85,4 +85,21 @@ class ProjectController extends Controller
 
         return view('admin.project.delete', compact('projects'));
     }
+
+    /* ripristinare elementi dal cestino */
+    public function restore(string $id)
+    {
+        $projects = Project::onlyTrashed()->findOrFail($id);
+        $projects->restore();
+
+        return redirect()->route('admin.project.index')->with('message_restore', $projects->nome . " è stato ripristinato con successo!!");
+    }
+
+    /* cancellare definitivamente un'elemento */
+    public function delete(string $id)
+    {
+        $projects = Project::onlyTrashed()->findOrFail($id);
+        $projects->forceDelete();
+        return redirect()->route('admin.project.deleteindex')->with('message_delete', $projects->nome . " è stato cancellato permanentemente con successo!!");
+    }
 }

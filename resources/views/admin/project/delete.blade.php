@@ -33,10 +33,12 @@
                         <td>{{ $singleproject->linguaggio_utilizzato}}</td>
                         <td><a href=" {{ $singleproject->url_repo}}">Clicca qui per vedere la repository</a></td>
                         <td class="d-flex">
-
-                            <a href="{{ route('admin.project.show', ['project' => $singleproject->id]) }}" class="btn btn-primary d-flex justify-content-center mx-2">Show</a>
-                            <a href="{{ route('admin.project.edit', ['project' => $singleproject->id]) }}" class="btn btn-primary d-flex justify-content-center">edit</a>
-                            <form action="{{ route('admin.project.destroy', ['project' => $singleproject->id]) }}" method="POST" class="d-inline-block delete_form" data_project_id="{{ $singleproject->id }}" data_project_nome="{{ $singleproject->nome }}">
+                            <form action="{{ route('admin.project.restore', ['project' => $singleproject->id]) }}" method="POST" class="d-inline-block" data_project_id="{{ $singleproject->id }}" data_project_nome="{{ $singleproject->nome }}">
+                                @method('PATCH')
+                                @csrf
+                                <button type="submit" class="btn btn-secondary">Ripristina</button>
+                            </form>
+                            <form action="{{ route('admin.project.permanent_delete', ['project' => $singleproject->id]) }}" method="POST" class="d-inline-block delete_form" data_project_id="{{ $singleproject->id }}" data_project_nome="{{ $singleproject->nome }}">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-warning">Elimina</button>

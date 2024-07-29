@@ -27,6 +27,8 @@ Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 route::middleware('auth')->name('admin.')->prefix('admin/')->group(
     function(){
         Route::get('project/delete', [ProjectController::class, 'deletedIndex'])->name('project.deleteindex');
+        Route::patch('project/{project}/restore', [ProjectController::class, 'restore'])->name('project.restore');
+        Route::delete('project/{project}/delete', [ProjectController::class, 'delete'])->name('project.permanent_delete');
         Route::resource('project', ProjectController::class);
 
     }
