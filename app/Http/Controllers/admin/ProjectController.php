@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use App\Http\Requests\StoreProjectRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,9 +30,11 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         $data = $request->except('_token');
+        $data = $request->validated();
+
         $newProject = new Project($data);
         $newProject->save();
 
@@ -58,9 +61,10 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(StoreProjectRequest $request, Project $project)
     {
         $data = $request->except('_token');
+        $data = $request->validated();
         $project->update($data);
 
         return redirect()->route('admin.project.show', ['project' => $project->id])->with('message_update_progetto', $project->nome . " è stato aggiornato con successo!!");

@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
         <div class="col-12">
             <form action="{{ route('admin.project.store') }}" method="POST" id="creation_form">
@@ -25,7 +33,7 @@
 
                     <div class="d-flex justify-content-between mt-3">
 
-                            <input class="btn btn-primary" type="submit" value="crea un nuovo animale">
+                            <input class="btn btn-primary" type="submit" value="crea un nuovo progetto">
                             <input class="btn btn-warning" type="reset" value="resetta campi">
 
                     </div>
@@ -36,4 +44,9 @@
 
     </div>
 </div>
+@endsection
+
+
+@section('custom_script')
+@vite('resources/js/delete_confirm.js')
 @endsection
