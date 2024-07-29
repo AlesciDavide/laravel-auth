@@ -17,10 +17,10 @@
 
 
                     <label for="linguaggio_utilizzato">linguaggio_utilizzato</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="linguaggio_utilizzato dell'animale" id="linguaggio_utilizzato" name="linguaggio_utilizzato" value="{{ old('linguaggio_utilizzato', $project->linguaggio_utilizzato) }}">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="linguaggio_utilizzato" id="linguaggio_utilizzato" name="linguaggio_utilizzato" value="{{ old('linguaggio_utilizzato', $project->linguaggio_utilizzato) }}">
 
                     <label for="url_repo">url_repo</label>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo dell'animale" id="url_repo" name="url_repo" value="{{ old('url_repo', $project->url_repo) }}">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="url_repo" id="url_repo" name="url_repo" value="{{ old('url_repo', $project->url_repo) }}">
 
 
 

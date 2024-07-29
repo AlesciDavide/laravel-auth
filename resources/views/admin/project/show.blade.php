@@ -33,14 +33,16 @@
                         <td>{{ $project->nome}}</td>
                         <td>{{ $project->linguaggio_utilizzato}}</td>
                         <td><a href=" {{ $project->url_repo}}">Clicca qui per vedere la repository</a></td>
-                        <td class="d-flex">
+                        <td>
+                            <div class="d-flex ">
 
-                            <a href="{{ route('admin.project.edit', ['project' => $project->id]) }}" class="btn btn-primary d-flex justify-content-center mx-2">Edit</a>
-                            <form action="{{ route('admin.project.destroy', ['project' => $project->id]) }}" method="POST" class="d-inline-block delete_form" data_project_id="{{ $project->id }}" data_project_nome="{{ $project->nome }}">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-warning">Elimina</button>
-                            </form>
+                                <a href="{{ route('admin.project.edit', ['project' => $project->id]) }}" class="btn btn-warning d-flex justify-content-center mx-2">Edit</a>
+                                <form action="{{ route('admin.project.destroy', ['project' => $project->id]) }}" method="POST" class="d-inline-block delete_form" data_project_id="{{ $project->id }}" data_project_nome="{{ $project->nome }}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Elimina</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
 
